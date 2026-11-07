@@ -23,6 +23,7 @@ from src.windows import build_windows, fmt
 DECISIONS = ROOT / "outputs" / "decisions.csv"
 RAW = ROOT / "outputs" / "raw"
 CHOICES = ["Accept", "Reject", "Needs review"]
+DIMS = ["unresolved_question", "emotional_spike", "stakes", "pull_to_next", "next_opening_strength"]
 
 st.set_page_config(page_title="Cliffhanger Auditor", layout="wide")
 st.title("Cliffhanger Auditor")
@@ -111,7 +112,7 @@ st.subheader(f"2. Episodes, weakest first (run {run_id})")
 sort_col = "final" if df["final"].notna().any() else "baseline_final"
 cols = [c for c in ["episode", "status", "final", "flagged", "ending_type", "none_kind",
                     "confidence_model_reported_uncalibrated", "low_confidence", "suggested_cut",
-                    "baseline_final", "decision"] if c in df]
+                    "baseline_final", "baseline_flagged", "baseline_ending_type", "decision"] if c in df]
 st.dataframe(df.sort_values(sort_col)[cols], hide_index=True, width="stretch")
 st.download_button("Export CSV (results + decisions)", df.drop(columns=["raw_response"], errors="ignore")
                    .to_csv(index=False), f"cliffhanger_{run_id}.csv", "text/csv")
@@ -154,9 +155,15 @@ with right:
         st.caption(row.get("suggestion_reason", ""))
         if row.get("confusing_not_suspenseful"):
             st.warning("Model flagged this ending as confusing rather than suspenseful.")
+    elif row.get("status") in ("llm_skipped", "not_run_quota"):
+        st.info("Baseline only (LLM not run for this episode). These scores come from simple keyword rules.")
+        st.markdown(f"**Baseline final score:** {row['baseline_final']} / 5"
+                    + ("  🚩 **flagged**" if row["baseline_flagged"] else ""))
+        st.markdown(f"**Baseline ending type:** {row['baseline_ending_type']}")
+        st.table(pd.DataFrame({"Baseline": [row.get(f"baseline_{d}") for d in DIMS]}, index=DIMS))
     else:
         st.error(f"No valid LLM output: {row.get('status')}. Errors: {row.get('errors')}")
-    st.caption("Baseline rules fired: " + "; ".join(row.get("baseline_rules", [])))
+    st.caption("Baseline rules fired: " + ("; ".join(row.get("baseline_rules", [])) or "none"))
 
     st.markdown("**Your decision**")
     b1, b2, b3 = st.columns(3)
