@@ -9,9 +9,11 @@
 **One user, one step, one checkable output:** a story editor reviewing episode endings gets each ending (and the next episode's opening) scored, weak ones flagged with evidence line IDs and timestamps, and an optional earlier cut point using existing lines. They accept or reject each one.
 
 ## Why this problem (and not 1 or 2)
-_(Your words. Draw on research/problem_proof.md: the 2 Kuku episodes that ended on cliffhangers and made you want the next one, the 2 Instagram reels with no cliffhanger (one a hook only, one a flat continuation you found boring), and what friends described. Explain the overlap with Problem 1: a promo also has to end on a cliffhanger, so the same ending judgment serves both. Explain why it matters more than Problems 1 and 2.)_
+In the short videos I've watched, people really wait for the next part when a video ends on a cliffhanger; otherwise they just make fun of it. On Instagram channels posting short AI videos, most comments ask for the next part. The two Kuku episodes I watched ended on cliffhangers and made me want the next one; one Instagram reel just continued, and I found it boring.
 
-**Limits of that evidence:** 2 episodes, 2 reels and 3-4 friends. Endings are one factor among several; friends also named animation, audio and story variety.
+Problem 1 picks promo moments from finished episodes; my tool finds weak endings while they can still be fixed. Problem 2 (AI lawyer) has nothing to do with Kuku's business, while this problem is tied directly to Kuku's own product: episodes that make people want the next one. The two overlap: a good promo also has to end on a cliffhanger, so the same ending judgment could help with promos too.
+
+**Limits of that evidence:** 2 episodes, 2 reels, 3-4 friends, and Instagram comments I didn't screenshot. Endings are one factor among several; friends also named animation, audio and story variety.
 
 ## Assumptions
 - **Not verified:** editors check endings by hand today; re-cutting or reordering existing material is possible in their workflow.
@@ -66,4 +68,4 @@ Based on the swap: 3.5-flash, unlike lite, actually suggested cuts and spread it
 
 ## Tools used, and one place AI got it wrong
 - **Tools:** Claude Code (build), Gemini 2.5-flash / 3.5-flash / 3.5-flash-lite (scoring), Python, Pydantic, Pandas, Streamlit.
-- **Where AI got it wrong:** _(pick one from notes/ai_mistakes.md. Suggested: M7, flash-lite gave pull 5 to an ending I scored 2 and never recognised a flat ending, with 0.95 confidence. Or M3, another AI assistant confidently claimed the scripts had no line IDs.)_
+- **Where AI got it wrong:** I scored episode 20 as a flat ending, where the story just continues with no new hook (pull to next 2). gemini-3.5-flash-lite called it a "threat" with pull 3 at 0.90 confidence, so it wasn't flagged. Across all 40 episodes it never labelled an ending "flat", even though telling flat endings from deliberate quiet ones was an explicit rubric rule. That's why every flag goes to a human.

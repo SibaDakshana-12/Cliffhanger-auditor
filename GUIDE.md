@@ -33,7 +33,7 @@
 - **Free tier, windows only:** the free-tier terms allow Google to use the inputs, so only about 15-20% of each script is sent. Production would use a paid or no-training tier.
 
 ## Interview Q&A
-**Why this problem?** _(your words: your research findings, plus the overlap with Problem 1, since promos also need cliffhangers)_
+**Why this problem?** "People really wait for the next part when a short video ends on a cliffhanger; otherwise they make fun of it. I saw that in Kuku episodes, Instagram reels and comments, and from friends. Problem 1 picks promos from finished episodes, but my tool finds weak endings while they can still be fixed. Problem 2 isn't Kuku's business at all, while this is about Kuku's own product. It also overlaps with Problem 1, because a good promo needs a cliffhanger ending too."
 
 **How do you know it's any good?** "I scored 10 episodes myself before seeing any AI output. The LLM agreed with my weak/strong flag on 8 of 10, against 6 of 10 for a keyword baseline, and its overall score was within 1 point of mine on all 10. But n=10 is tiny, and I chose the flag threshold after seeing my own scores. Episodes 41-50 were held out and run once: all 10 gave valid output, but I have no manual scores for them, so accuracy there isn't measured."
 
