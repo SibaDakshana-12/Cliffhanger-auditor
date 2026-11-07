@@ -1,31 +1,28 @@
 # Cliffhanger Auditor (Problem 3)
 
-**Links:**
-- App: https://cliffhanger-auditor-mmvbkdwqqpei5lx7fj2xga.streamlit.app/ (synthetic demo, baseline only)
-- Code: https://github.com/SibaDakshana-12/cliffhanger-auditor
-- Raw outputs: _(Drive link)_
-- Video: _(link)_
+**App:** https://cliffhanger-auditor-mmvbkdwqqpei5lx7fj2xga.streamlit.app/ (synthetic demo, baseline only) ·
+**Code:** https://github.com/SibaDakshana-12/cliffhanger-auditor ·
+**Raw outputs:** _(Drive link)_ · **Video:** _(link)_
 
 **One user, one step, one checkable output:** a story editor reviewing episode endings gets each ending (and the next episode's opening) scored, weak ones flagged with evidence line IDs and timestamps, and an optional earlier cut point using existing lines. They accept or reject each one.
 
 ## Why this problem (and not 1 or 2)
 In the short videos I've watched, people really wait for the next part when a video ends on a cliffhanger; otherwise they just make fun of it. On Instagram channels posting short AI videos, most comments ask for the next part. The two Kuku episodes I watched ended on cliffhangers and made me want the next one; one Instagram reel just continued, and I found it boring.
 
-Problem 1 picks promo moments from finished episodes; my tool finds weak endings while they can still be fixed. Problem 2 (AI lawyer) has nothing to do with Kuku's business, while this problem is tied directly to Kuku's own product: episodes that make people want the next one. The two overlap: a good promo also has to end on a cliffhanger, so the same ending judgment could help with promos too.
+Problem 1 picks promo moments from finished episodes; my tool finds weak endings while they can still be fixed. Problem 2 (AI lawyer) has nothing to do with Kuku's business, while this problem is tied directly to Kuku's own product: episodes that make people want the next one. The two overlap: a good promo also has to end on a cliffhanger.
 
-**Limits of that evidence:** 2 episodes, 2 reels, 3-4 friends, and Instagram comments I didn't screenshot. Endings are one factor among several; friends also named animation, audio and story variety.
+**Limits of the evidence:** 2 episodes, 2 reels, 3-4 friends, and Instagram comments I didn't screenshot. Endings are one factor among several; friends also named animation, audio and story variety.
 
 ## Assumptions
-- **Not verified:** editors check endings by hand today; re-cutting or reordering existing material is possible in their workflow.
-- **Judged from the script only.** Script time is not the same as the final video length.
-- **Windows:** the ending is the last ~25s and the opening is the next episode's first ~10s. These are judgment calls, set in config.yaml.
+- **Not verified:** editors check endings by hand today; re-cutting existing material is possible in their workflow.
+- **Script only:** script time is not the same as the final video length. The ending window (last ~25s) and opening window (next ~10s) are judgment calls, set in config.yaml.
 - **Flag rule:** an episode is weak if its weighted score is 3.0 or below, or pull_to_next is 2 or below. I set this after seeing my own 10 scores, so agreement on those 10 is optimistic.
 
 ## How it works
-1. **Code:** a regex parser gives every script line an ID and its own timestamp, and picks the ending and opening windows.
+1. **Code:** a regex parser gives every line an ID and its own timestamp, and cuts the ending and opening windows.
 2. **LLM** (Gemini, one call per episode): sees only the numbered window lines, with writer labels like "cliffhanger" masked. It returns JSON: ending type, five 1-5 scores, confidence, reason, evidence IDs, and a cut point or "no_valid_alternative".
-3. **Code:** Pydantic and validators reject invented line IDs, cut points outside the episode, and broken rubric rules, then retry once with the problems listed. Timestamps always come from the parser. The weighted score and flag are plain Python, with weights in config.yaml.
-4. **Human:** a Streamlit app ranks the weakest endings first. Each gets Accept, Reject or Needs review, saved to CSV, with a live acceptance rate.
+3. **Code:** validators reject invented line IDs, cuts outside the episode and broken rubric rules, then retry once. Timestamps come only from the parser. The weighted score and flag are plain Python.
+4. **Human:** a Streamlit app shows the weakest endings first: Accept, Reject or Needs review, with a live acceptance rate.
 
 A keyword baseline runs alongside it, to check the LLM is worth its cost.
 
@@ -36,36 +33,29 @@ I scored 10 episodes (from 1-40) myself before seeing any AI output. Main model:
 |---|---|---|
 | Weak/strong flag agrees | **8/10** (0 false flags; missed 2) | 6/10 (falsely flags all 4 strong endings) |
 | Overall within 1 point | **10/10** | 6/10 |
-| pull_to_next within 1 point | 9/10 | 6/10 |
 | Ending type, exact match | 5/10 | 2/10 |
 
-**Full run on 1-40:** 40/40 valid outputs. 3 invalid outputs were caught by the validators and fixed on retry, plus 2 rate-limit retries. 10 episodes were flagged.
-
-**Held-out 41-50** (prompt never tuned on them; run once as an interview dry run): 10/10 valid outputs, 3 invalid outputs caught by validation and fixed on retry, 0 API failures, 0 flagged. Final scores 3.2-5.0, four episodes at 5.0. I have no manual scores for 41-50, so this shows the tool runs cleanly on unseen input. It doesn't measure accuracy there, and the high scores fit the upward squeeze seen on 1-40.
-
-**Model swap** (same prompt, a one-line config change; gemini-3.5-flash vs flash-lite on episodes 1-11): same flag on 10/11, final score within 1 point on 11/11, same ending type on 9/11. Flash-lite scored slightly higher on average and used about 6-8x fewer output tokens.
-
-**Success in a real team:** the editor's acceptance rate, and the share of flagged episodes the editor agrees with. Improved retention would need audience data, and I don't claim it.
+- **Episodes 1-40:** 40/40 valid outputs; validators caught 3 invalid outputs, all fixed on retry; 10 flagged.
+- **Held-out 41-50** (never used to tune the prompt): 10/10 valid, 0 flagged. There are no manual scores for these, so this shows it runs on unseen input, not that it's accurate there.
+- **Model swap** (a one-line config change; 3.5-flash vs flash-lite on episodes 1-11): same flag on 10/11, final score within 1 point on 11/11. Flash-lite used about 6x fewer output tokens.
+- **Success in a real team:** the editor's acceptance rate, and the share of flags the editor agrees with. Improved retention would need audience data, and I don't claim it.
 
 ## Where it fails
-- **Missed the flat ending:** episode 20, which I scored flat (pull 2), was called a "threat" (pull 3). Flash-lite never used "flat" on any of the 40 episodes.
-- **Over-scores weak endings:** episode 24 got pull 5 where I gave 2. Pull was 5 on 23 of 40 episodes. It works more like a hook / no-hook switch than a 1-5 scale.
-- **Never suggested a cut on flash-lite** (all 40 "no_valid_alternative"). gemini-3.5-flash did suggest cuts, so this feature depends on the model.
-- **Confidence was always 0.90-1.00,** including on the misses. It is labelled uncalibrated everywhere.
+- **Squeezes scores to the top:** pull was 5 on 23 of 40 episodes; episode 24 got 5 where I gave 2. It acts more like a hook / no-hook switch than a 1-5 scale.
+- **Never recognised a flat ending** (see below), and on flash-lite **never suggested a cut**. 3.5-flash did, so that feature depends on the model.
+- **Confidence was always 0.90-1.00,** even on the misses, so it's labelled uncalibrated everywhere.
 - **Trope risk:** humiliation and withheld-reveal endings all got pull 5, but so did threat endings. With one manual example, I can't confirm trope-specific over-scoring.
-- **Can't judge animation, audio, acting or story originality:** it reads scripts only.
-- **The validators check that cited lines exist,** not that they support the reason.
+- **Reads scripts only:** it can't judge animation, audio, acting or originality. Validators check that cited lines exist, not that they support the reason.
 
 ## Scale, cost, languages
-- **Real tokens per episode:** about 2,600 input. Output was about 280 (flash-lite) or about 1,500 (3.5-flash, which "thinks" first).
-- **Cost:** nothing was spent; every run used the free tier. Estimated at flash-lite's paid price (checked 2026-11-08: $0.30 / $2.50 per 1M input/output tokens), that's about **$0.0015 per episode, $0.09 per 50-episode show, and ~$9 per 100 shows**. 3.5-flash produces ~5x more output tokens, so it would cost more (its price wasn't checked).
-- **Throughput:** the free tier allows about 20 requests per day per model, which ran out several times during this project. Production needs the paid tier, which also stops Google using the content (pricing page: "Used to improve our products": free tier Yes, paid tier No).
-- **Any show in this format** runs with `python run.py --input <folder>`. A different format fails with a clear error.
-- **Other languages: untested.** The baseline's keyword lists are English-only, the LLM prompt is in English, and the parser assumes this format.
+- **Real tokens per episode:** about 2,600 input; output about 280 (flash-lite) or 1,500 (3.5-flash).
+- **Cost:** nothing was spent; every run used the free tier. At flash-lite's paid price ($0.30 / $2.50 per 1M input/output tokens, checked 2026-11-08), that's about **$0.0015 per episode, $0.09 per show, ~$9 per 100 shows**.
+- **Throughput:** the free tier allows about 20 requests per day per model, and it ran out several times. Production needs the paid tier, which also stops Google using the inputs to improve its products.
+- **Any show in this format:** `python run.py --input <folder>`. Other formats fail with a clear error. **Other languages are untested:** the prompt and baseline keywords are English.
 
 ## What a stronger paid model would add
-Based on the swap: 3.5-flash, unlike lite, actually suggested cuts and spread its scores more. A stronger model could plausibly separate flat from deliberate endings better. That's untested, and the 10-episode comparison is how I'd check it. The cost is the same token counts at that model's price (to verify).
+In the swap, 3.5-flash suggested cut points where flash-lite never did. A stronger model might also tell flat endings from deliberate ones. That's untested, and my 10 manual scores are how I'd check it, at the same token counts times that model's price.
 
 ## Tools used, and one place AI got it wrong
 - **Tools:** Claude Code (build), Gemini 2.5-flash / 3.5-flash / 3.5-flash-lite (scoring), Python, Pydantic, Pandas, Streamlit.
-- **Where AI got it wrong:** I scored episode 20 as a flat ending, where the story just continues with no new hook (pull to next 2). gemini-3.5-flash-lite called it a "threat" with pull 3 at 0.90 confidence, so it wasn't flagged. Across all 40 episodes it never labelled an ending "flat", even though telling flat endings from deliberate quiet ones was an explicit rubric rule. That's why every flag goes to a human.
+- **Where AI got it wrong:** I scored episode 20 as a flat ending: the story just continues with no new hook (pull 2). gemini-3.5-flash-lite called it a "threat" (pull 3, 0.90 confidence), so it wasn't flagged. Across 40 episodes it never labelled an ending "flat", even though that was an explicit rubric rule. That's why every flag goes to a human.
