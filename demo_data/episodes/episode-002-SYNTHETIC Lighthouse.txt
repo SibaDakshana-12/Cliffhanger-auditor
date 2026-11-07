@@ -1,0 +1,70 @@
+EPISODE NUMBER: Episode 2
+EPISODE LOGLINE: SYNTHETIC DEMO EPISODE (invented for testing, not Kuku content). The stranger turns out to be Tomas, the new supply-boat driver, and the two make small talk over tea.
+CONTINUITY NOTES: SYNTHETIC. Follows Episode 1. Intended as a WEAK ending example (flat continuation, no new hook).
+
+--- SCRIPT START ---
+
+SCENE 01
+Scene heading: INT. LIGHTHOUSE LAMP ROOM – NIGHT
+Scene start: 00:00.00
+Scene end: 00:48.00
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:03.00)
+The hatch swings open. A soaked man in a yellow raincoat climbs up holding a crate.
+
+**TOMAS (Cheerful, Out of Breath):**
+Start: (00:03.20) | End: (00:06.00)
+"Supply boat! Sorry, the bell's broken."
+
+**MIRA (Shaken, Relieved):**
+Start: (00:06.50) | End: (00:08.50)
+"You scared me half to death."
+
+**ACTION:**
+Start: (00:09.00) | End: (00:13.00)
+Tomas sets the crate down: tinned soup, lamp oil, a bag of oranges.
+
+**TOMAS (Friendly):**
+Start: (00:13.20) | End: (00:15.50)
+"Oil's in the blue cans this month."
+
+**MIRA (Polite):**
+Start: (00:16.00) | End: (00:17.50)
+"Thanks. Tea?"
+
+**TOMAS (Warm):**
+Start: (00:18.00) | End: (00:19.50)
+"Wouldn't say no."
+
+**ACTION:**
+Start: (00:20.00) | End: (00:26.00)
+Mira fills the kettle and sets out two chipped mugs. The letter lies forgotten on the desk.
+
+**TOMAS (Chatty):**
+Start: (00:26.50) | End: (00:30.00)
+"Weather should clear by Thursday, they say."
+
+**MIRA (Distracted):**
+Start: (00:30.50) | End: (00:32.00)
+"That's good."
+
+**CAMERA:**
+Start: (00:32.00) | End: (00:38.00)
+Medium two-shot of them sipping tea as the lamp turns overhead.
+
+**TOMAS (Easygoing):**
+Start: (00:38.50) | End: (00:41.00)
+"I'll be back next Tuesday with more oil."
+
+**MIRA (Neutral):**
+Start: (00:41.50) | End: (00:43.00)
+"See you then."
+
+**ACTION:**
+Start: (00:43.00) | End: (00:48.00)
+Tomas climbs back down the hatch. Mira rinses the mugs and returns to her notebook.
+
+--- SCRIPT END ---

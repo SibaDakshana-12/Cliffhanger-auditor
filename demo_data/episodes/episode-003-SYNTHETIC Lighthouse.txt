@@ -1,0 +1,54 @@
+EPISODE NUMBER: Episode 3
+EPISODE LOGLINE: SYNTHETIC DEMO EPISODE (invented for testing, not Kuku content). At dawn Mira burns the strange letter and makes peace with her fear of the night shift.
+CONTINUITY NOTES: SYNTHETIC. Follows Episode 2. Intended as a deliberate NON-cliffhanger example (quiet, resolved ending).
+
+--- SCRIPT START ---
+
+SCENE 01
+Scene heading: EXT. LIGHTHOUSE GALLERY – DAWN
+Scene start: 00:00.00
+Scene end: 00:45.00
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:05.00)
+Wide shot of the sea turning gold as the sun rises behind the lighthouse.
+
+**ACTION:**
+Start: (00:01.00) | End: (00:06.00)
+Mira steps onto the gallery holding the letter and a box of matches.
+
+**MIRA (Quiet, Reflective):**
+Start: (00:06.50) | End: (00:10.00)
+"Whoever you are, you don't get to scare me anymore."
+
+**ACTION:**
+Start: (00:10.50) | End: (00:15.00)
+She strikes a match and lets the letter burn, the ash drifting out over the water.
+
+**CAMERA:**
+Start: (00:15.00) | End: (00:20.00)
+Close-up on her face, calm for the first time, lit by the morning sun.
+
+**MIRA (Softly, To Herself):**
+Start: (00:20.50) | End: (00:24.00)
+"Mum kept this light for thirty years. I can keep it too."
+
+**ACTION:**
+Start: (00:24.50) | End: (00:30.00)
+She switches off the great lamp as the day takes over, and rests her hand on the warm glass.
+
+**CAMERA:**
+Start: (00:30.00) | End: (00:36.00)
+Slow pull back revealing the lighthouse alone on the rocks, gulls circling.
+
+**MIRA (V.O.) (Peaceful):**
+Start: (00:36.50) | End: (00:41.00)
+"For the first time, I'm not afraid of the dark."
+
+**SOUND FX:**
+Start: (00:40.00) | End: (00:45.00)
+Gentle strings settle into a warm, resolving chord as the waves roll in.
+
+--- SCRIPT END ---

@@ -1,0 +1,82 @@
+EPISODE NUMBER: Episode 1
+EPISODE LOGLINE: SYNTHETIC DEMO EPISODE (invented for testing, not Kuku content). Night-shift lighthouse keeper Mira finds a letter in her own handwriting, dated tomorrow, warning her not to open the door.
+CONTINUITY NOTES: SYNTHETIC. First episode. Intended as a STRONG cliffhanger example.
+
+--- SCRIPT START ---
+
+SCENE 01
+Scene heading: INT. LIGHTHOUSE LAMP ROOM – NIGHT
+Scene start: 00:00.00
+Scene end: 00:52.00
+
+Actions and dialogue:
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:04.00)
+Slow push-in on the turning lighthouse lamp as rain lashes the windows.
+
+**ACTION:**
+Start: (00:01.00) | End: (00:05.00)
+Mira, in a wool sweater, logs ship lights in a notebook by lantern light.
+
+**MIRA (Tired, Wry):**
+Start: (00:05.20) | End: (00:07.80)
+"Three ships. Same as every Tuesday."
+
+**SOUND FX:**
+Start: (00:08.00) | End: (00:09.50)
+A sharp knock on the metal door far below.
+
+**CAMERA:**
+Start: (00:09.50) | End: (00:13.00)
+Close-up on Mira freezing, pen hovering over the page.
+
+**MIRA (Uneasy):**
+Start: (00:13.20) | End: (00:15.00)
+"Nobody comes out here at night."
+
+**ACTION:**
+Start: (00:15.50) | End: (00:20.00)
+Mira notices an envelope slid under the lamp-room hatch and picks it up.
+
+**CAMERA:**
+Start: (00:20.00) | End: (00:24.00)
+Insert on the envelope: her own name, written in her own handwriting.
+
+**MIRA (Confused, Whispering):**
+Start: (00:24.20) | End: (00:26.50)
+"That's my writing..."
+
+**ACTION:**
+Start: (00:27.00) | End: (00:31.00)
+She tears it open and reads, her face draining of colour.
+
+**CAMERA:**
+Start: (00:31.00) | End: (00:35.00)
+Insert on the letter: dated tomorrow. One line: DO NOT OPEN THE DOOR.
+
+**SOUND FX:**
+Start: (00:35.50) | End: (00:37.00)
+Footsteps climbing the spiral stairs, slow and heavy.
+
+**MIRA (Terrified):**
+Start: (00:37.20) | End: (00:39.00)
+"Who's there?"
+
+**CAMERA:**
+Start: (00:39.00) | End: (00:44.00)
+Low angle on the hatch handle turning slowly from the other side.
+
+**STRANGER (O.S.) (Calm, Knowing):**
+Start: (00:44.20) | End: (00:47.50)
+"You weren't supposed to read that yet, Mira."
+
+**CAMERA:**
+Start: (00:47.50) | End: (00:51.00)
+Extreme close-up on Mira's wide eyes as the hatch begins to lift.
+
+**SOUND FX:**
+Start: (00:50.00) | End: (00:52.00)
+Low drone rises to a cliffhanger sting, then cut to black.
+
+--- SCRIPT END ---

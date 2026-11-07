@@ -1,0 +1,11 @@
+episode,unresolved_question,emotional_spike,stakes,pull_to_next,next_opening_strength,ending_type,overall,flagged,flag_reason,scored_on
+5,4,5,3,3,3,other,3,True,overall <= 3,2026-11-08
+10,3,5,2,3,5,none,3,True,overall <= 3,2026-11-08
+15,4,5,4,4,5,threat,4,False,,2026-11-08
+17,2,4,2,3,5,none,3,True,overall <= 3,2026-11-08
+20,2,3,3,2,4,none,2,True,overall <= 3; pull_to_next <= 2,2026-11-08
+24,3,4,3,2,4,decision,3,True,overall <= 3; pull_to_next <= 2,2026-11-08
+28,5,5,5,5,4,withheld_reveal,5,False,,2026-11-08
+32,5,5,5,5,4,threat,5,False,,2026-11-08
+36,5,5,5,5,4,decision,5,False,,2026-11-08
+39,4,4,5,5,4,decision,5,False,,2026-11-08

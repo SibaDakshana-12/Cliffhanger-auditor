@@ -1,0 +1,14 @@
+# Secrets and confidential Kuku content: never commit
+.env
+data/
+outputs/
+research/
+
+# Python / tooling
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Kuku assignment brief (not ours to publish)
+assignment/
