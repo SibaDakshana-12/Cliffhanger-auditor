@@ -2,7 +2,7 @@
 .env
 data/
 outputs/
-research/
+research/screenshots/   # screenshots may show other people's names/comments
 
 # Python / tooling
 __pycache__/
