@@ -12,3 +12,8 @@ __pycache__/
 
 # Kuku assignment brief (not ours to publish)
 assignment/
+
+# Personal docs: kept on this PC only
+GUIDE.md
+INTERVIEW_CHECKLIST.md
+SOLUTION_DOC.md
