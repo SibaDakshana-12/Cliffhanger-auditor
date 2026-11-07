@@ -1,5 +1,11 @@
 # Cliffhanger Auditor (Problem 3)
 
+**Links:**
+- App: https://cliffhanger-auditor-mmvbkdwqqpei5lx7fj2xga.streamlit.app/ (synthetic demo, baseline only)
+- Code: https://github.com/SibaDakshana-12/cliffhanger-auditor
+- Raw outputs: _(Drive link)_
+- Video: _(link)_
+
 **One user, one step, one checkable output:** a story editor reviewing episode endings gets each ending (and the next episode's opening) scored, weak ones flagged with evidence line IDs and timestamps, and an optional earlier cut point using existing lines. They accept or reject each one.
 
 ## Why this problem (and not 1 or 2)

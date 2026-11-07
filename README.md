@@ -1,5 +1,8 @@
 # Cliffhanger Auditor
 
+**Live demo:** https://cliffhanger-auditor-mmvbkdwqqpei5lx7fj2xga.streamlit.app/
+(synthetic demo episodes; baseline scores only, since the hosted demo has no API key)
+
 Reads microdrama screenplays and checks how each episode **ends** and how the
 **next one opens**. For every episode it gives an ending type, five 1-5 scores,
 a model-reported (uncalibrated) confidence, a one-line reason, evidence line IDs
