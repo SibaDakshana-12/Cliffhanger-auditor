@@ -38,7 +38,8 @@ I scored 10 episodes (from 1-40) myself before seeing any AI output. Main model:
 - **Episodes 1-40:** 40/40 valid outputs; validators caught 3 invalid outputs, all fixed on retry; 10 flagged.
 - **Held-out 41-50** (never used to tune the prompt): 10/10 valid, 0 flagged. There are no manual scores for these, so this shows it runs on unseen input, not that it's accurate there.
 - **Model swap** (a one-line config change; 3.5-flash vs flash-lite on episodes 1-11): same flag on 10/11, final score within 1 point on 11/11. Flash-lite used about 6x fewer output tokens.
-- **Success in a real team:** the editor's acceptance rate, and the share of flags the editor agrees with. Improved retention would need audience data, and I don't claim it.
+- **Editor review of the 10 flags (in the app):** 6 accepted, 2 rejected (16, 17), 2 needs review, so the **acceptance rate is 6/8 = 75%**. Episode 17 is a deliberate, tender ending: my rule-based flag and the model both caught it, but on reading it I rejected the flag. The 3.0 threshold also catches quiet endings that are fine.
+- **Success in a real team:** the same acceptance rate over many shows. Improved retention would need audience data, and I don't claim it.
 
 ## Where it fails
 - **Squeezes scores to the top:** pull was 5 on 23 of 40 episodes; episode 24 got 5 where I gave 2. It acts more like a hook / no-hook switch than a 1-5 scale.

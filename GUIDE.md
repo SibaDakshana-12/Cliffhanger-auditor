@@ -56,4 +56,4 @@
 
 **What happens on a new folder in a different format?** "It stops before any API call, with the file name, line number and what was expected. It never guesses and never skips an episode silently."
 
-**How would you know it worked for a real team?** Editor acceptance rate in the app, and the share of flagged episodes the editor agrees with. Only audience data (completion and next-episode rates before and after a re-cut) could show it improves retention. I don't claim that.
+**How would you know it worked for a real team?** In my own review of the 10 flags I accepted 6, rejected 2 and marked 2 "needs review", so 75% of decided flags were accepted. For a real team: editor acceptance rate in the app, and the share of flagged episodes the editor agrees with. Only audience data (completion and next-episode rates before and after a re-cut) could show it improves retention. I don't claim that.
