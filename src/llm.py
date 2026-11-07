@@ -20,12 +20,20 @@ class LLMResponse:
     model: str
 
 
+class MissingKeyError(RuntimeError):
+    """No API key configured: retrying can't help."""
+
+
+def has_key(cfg: dict) -> bool:
+    load_dotenv(ROOT / ".env")
+    return bool(os.getenv(cfg["api_key_env"]))
+
+
 def call_llm(prompt: str, cfg: dict) -> LLMResponse:
     """Send one prompt; return the reply. Raises on any API error (the caller decides whether to retry)."""
-    load_dotenv(ROOT / ".env")
+    if not has_key(cfg):
+        raise MissingKeyError(f"{cfg['api_key_env']} is not set. Add it to .env")
     key = os.getenv(cfg["api_key_env"])
-    if not key:
-        raise RuntimeError(f"{cfg['api_key_env']} is not set. Add it to .env")
     if cfg["provider"] == "gemini":
         return _call_gemini(prompt, cfg, key)
     raise ValueError(f"Unknown llm provider {cfg['provider']!r} in config.yaml")
@@ -41,7 +49,7 @@ def is_retryable(error: Exception) -> bool:
     """Retry only temporary problems: per-minute rate limits (429), server errors (5xx) and network errors.
     Other 4xx errors (bad request, bad key) and daily quotas will fail the same way every time."""
     code = getattr(error, "code", None)
-    if is_daily_quota(error):
+    if is_daily_quota(error) or isinstance(error, MissingKeyError):
         return False
     return not isinstance(code, int) or code == 429 or code >= 500
 

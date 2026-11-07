@@ -16,6 +16,7 @@ import streamlit as st
 
 from run import episode_range, run
 from src.config import ROOT, load_config
+from src.llm import has_key
 from src.parser import ParseError, parse_folder
 from src.windows import build_windows, fmt
 
@@ -35,7 +36,9 @@ with st.sidebar:
     folder = st.text_input("Screenplay folder", "demo_data/episodes")
     uploads = st.file_uploader("...or upload .txt screenplays", type="txt", accept_multiple_files=True)
     subset = st.text_input("Episodes (optional, e.g. 1-40)", "")
-    use_llm = st.checkbox("Use LLM (needs API key in .env)", value=True)
+    key_ok = has_key(load_config()["llm"])
+    use_llm = st.checkbox("Use LLM (needs API key in .env)", value=key_ok, disabled=not key_ok,
+                          help=None if key_ok else "No API key on this server: baseline scores only.")
     if st.button("Run audit", type="primary"):
         if uploads:   # upload-only mode: write files to a temp folder and run on that
             tmp = Path(tempfile.mkdtemp())
