@@ -56,8 +56,8 @@ I scored 10 episodes (from 1-40) myself before seeing any AI output. Main model:
 
 ## Scale, cost, languages
 - **Real tokens per episode:** about 2,600 input. Output was about 280 (flash-lite) or about 1,500 (3.5-flash, which "thinks" first).
-- **Cost:** at the paid list prices in config.yaml (to verify), that's about $0.0015 per episode with flash-lite and $0.005 with 3.5-flash: roughly $7-23 per 100 shows of 50 episodes.
-- **Throughput:** the free tier allows about 20 requests per day per model, which ran out several times during this project. Production needs the paid tier, which also stops Google using the content.
+- **Cost:** nothing was spent; every run used the free tier. Estimated at flash-lite's paid price (checked 2026-11-08: $0.30 / $2.50 per 1M input/output tokens), that's about **$0.0015 per episode, $0.09 per 50-episode show, and ~$9 per 100 shows**. 3.5-flash produces ~5x more output tokens, so it would cost more (its price wasn't checked).
+- **Throughput:** the free tier allows about 20 requests per day per model, which ran out several times during this project. Production needs the paid tier, which also stops Google using the content (pricing page: "Used to improve our products": free tier Yes, paid tier No).
 - **Any show in this format** runs with `python run.py --input <folder>`. A different format fails with a clear error.
 - **Other languages: untested.** The baseline's keyword lists are English-only, the LLM prompt is in English, and the parser assumes this format.
 
